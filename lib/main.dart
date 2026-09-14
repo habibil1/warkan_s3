@@ -189,7 +189,7 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
         leading: Padding(
           padding: const EdgeInsets.all(6.0),
           child: Image.asset(
-            'assets/images/logo_warkan.png',
+            'assets/images/iconwarkan.png',
             fit: BoxFit.contain,
           ),
         ),
@@ -373,7 +373,7 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: kolom,
-                    mainAxisExtent: 116,
+                    mainAxisExtent: 255,
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
                   ),

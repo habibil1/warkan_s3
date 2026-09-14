@@ -75,7 +75,7 @@ class _JumlahPorsiState extends State<JumlahPorsi> {
           duration: const Duration(seconds: 2),
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          backgroundColor: const Color(0xFF1E3A8A),
+          backgroundColor: const Color(0xFF1E56A0), // Tetap warna asli biru
         ),
       );
     }
@@ -93,95 +93,68 @@ class _JumlahPorsiState extends State<JumlahPorsi> {
   @override
   Widget build(BuildContext context) {
     final bisaPesan = bisaDipesan(widget.tersedia, widget.porsiTersisa);
+    const warnaUtama = Color(0xFF1E56A0); // Tetap warna asli biru
 
-    if (!bisaPesan) {
-      return OutlinedButton(
-        onPressed: null,
-        style: OutlinedButton.styleFrom(
-          side: BorderSide(color: Colors.grey.shade300),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-          minimumSize: const Size(0, 28),
-          visualDensity: VisualDensity.compact,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        ),
-        child: Text(
-          'Habis',
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: Colors.grey.shade400,
-          ),
-        ),
-      );
-    }
-
-    const warnaUtama = Color(0xFF1E56A0);
-
-    if (_jumlah == 0) {
-      return OutlinedButton(
-        onPressed: _tambahPorsi,
-        style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: warnaUtama, width: 1.2),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-          minimumSize: const Size(0, 28),
-          visualDensity: VisualDensity.compact,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        ),
-        child: const Text(
-          '+ Tambah',
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.bold,
-            color: warnaUtama,
-          ),
-        ),
-      );
-    }
-
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFE8F1F9),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: warnaUtama.withValues(alpha: 0.3)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 26, minHeight: 26),
-            icon: Icon(
-              _jumlah == 1 ? Icons.delete_outline : Icons.remove,
-              size: 14,
-              color: warnaUtama,
-            ),
-            tooltip: 'Kurangi porsi',
-            onPressed: _kurangPorsi,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Text(
-              '$_jumlah',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 12,
-                color: Color(0xFF163172),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Tombol Minus (Lingkaran Outlined)
+        InkWell(
+          onTap: _jumlah > 0 ? _kurangPorsi : null,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: 28,
+            height: 28,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: _jumlah > 0 ? Colors.grey.shade400 : Colors.grey.shade200,
+                width: 1.2,
               ),
+              color: Colors.transparent,
+            ),
+            child: Icon(
+              Icons.remove,
+              size: 16,
+              color: _jumlah > 0 ? Colors.grey.shade700 : Colors.grey.shade300,
             ),
           ),
-          IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 26, minHeight: 26),
-            icon: const Icon(
+        ),
+        
+        // Angka Jumlah
+        SizedBox(
+          width: 32,
+          child: Text(
+            '$_jumlah',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+              color: Color(0xFF163172),
+            ),
+          ),
+        ),
+
+        // Tombol Plus (Lingkaran Filled Biru)
+        InkWell(
+          onTap: bisaPesan ? _tambahPorsi : null,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: 28,
+            height: 28,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: bisaPesan ? warnaUtama : warnaUtama.withValues(alpha: 0.3),
+            ),
+            child: const Icon(
               Icons.add,
-              size: 14,
-              color: warnaUtama,
+              size: 18,
+              color: Colors.white,
             ),
-            tooltip: 'Tambah porsi',
-            onPressed: _tambahPorsi,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
