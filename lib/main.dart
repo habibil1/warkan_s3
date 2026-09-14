@@ -47,7 +47,6 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
 
   final Map<String, int> jumlahPesanan = {};
 
-  // PERUBAHAN ADA DI SINI: Menambahkan gambarAsset ke setiap menu
   final List<Menu> daftarMenu = const [
     Menu(
       namaMenu: 'Mie Ayam', 
@@ -55,7 +54,7 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
       harga: 8000, 
       tersedia: true, 
       porsiTersisa: 8,
-      gambarAsset: 'assets/images/mieayam.jpg', // Sesuaikan nama file dengan yang Anda punya
+      gambarAsset: 'assets/images/mieayam.jpg',
     ),
     Menu(
       namaMenu: 'Batagor', 
@@ -74,12 +73,12 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
       gambarAsset: 'assets/images/martabakmanis.jpg',
     ),
     Menu(
-      namaMenu: 'Martabak Asin Komplit Spesial Telur Daging Sapi Lezat Gurih', 
+      namaMenu: 'Martabak Asin Komplit Spesial Telur Daging Sapi Lezat Gurihhhh', 
       kategori: 'Makanan', 
       harga: 25000, 
       tersedia: true, 
       porsiTersisa: 10,
-      gambarAsset: 'assets/images/martabasasin.jpg',
+      gambarAsset: 'assets/images/martabakasin.jpg',
     ),
     Menu(
       namaMenu: 'Nasi Goreng', 
@@ -87,7 +86,7 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
       harga: 13000, 
       tersedia: true, 
       porsiTersisa: 7,
-      gambarAsset: 'assets/images/nasigoreng.jpg',
+      gambarAsset: 'assets/images/nasgor.jpg',
     ),
     Menu(
       namaMenu: 'Es Teh', 
@@ -109,7 +108,7 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
       namaMenu: 'Es Jeruk', 
       kategori: 'Minuman', 
       harga: 3000, 
-      tersedia: false, // Diubah menjadi false untuk testing Tampilan HABIS
+      tersedia: false,
       porsiTersisa: 0,
       gambarAsset: 'assets/images/esjeruk.jpg',
     ),
@@ -189,7 +188,6 @@ class _WarungMenuPageState extends State<WarungMenuPage> {
         leadingWidth: 60,
         leading: Padding(
           padding: const EdgeInsets.all(6.0),
-          // Logo aplikasi warkan biarkan tetap seperti ini
           child: Image.asset(
             'assets/images/logo_warkan.png',
             fit: BoxFit.contain,
